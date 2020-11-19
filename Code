@@ -1,0 +1,38 @@
+import random
+
+words = ["game", "play", "covid"]
+
+pick = random.choice(words)
+
+right = ['_'] * len(pick)
+wrong = [] 
+
+def update():
+    for i in right:
+        print(i)
+        
+    
+while True:
+    
+    guess = input('enter a letter: ')
+    if guess in pick:
+        index = 0
+        for i in pick:
+            if i == guess:
+                right[index] = guess
+            index += 1
+        update()
+    else:
+        if guess not in wrong:
+            wrong.append(guess)
+            print('Wrong: ', wrong)
+                     
+        else:
+            print('you have guessed already')
+            
+    if '_' not in right:
+        print('you won')
+        break
+    if len(wrong) >= 3:
+        print('you lose')
+        break
